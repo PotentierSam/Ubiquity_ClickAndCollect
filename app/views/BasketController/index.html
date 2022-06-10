@@ -1,0 +1,61 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+{% if baskets!=null %}
+<table class="table table-dark table-striped">
+    <thead>
+    <tr>
+        <th>Basket</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for basket in baskets %}
+    <tr>
+        <td>{{basket.name}}</td>
+        <td>
+            <a href="BasketController/BasketDetails/{{basket.id}}"><button type="button" class="btn btn-light">details</button></a>
+        </td>
+        <td>
+            <a href="BasketController/Timeslots/{{basket.id}}"><button type="button" class="btn btn-success">validate</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% if basketsDetails!=null %}
+<table class="table table-dark table-striped">
+    <thead>
+    <tr>
+        <th>products</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for basketDetail in basketsDetails %}
+    <tr>
+        <td>{{basketDetail.product.name}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% if timeslots!=null %}
+<table class="table table-dark table-striped">
+    <thead>
+    <tr>
+        <th>slotdate</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for timeslot in timeslots %}
+    <tr>
+        <td>{{timeslot.slotDate}}</td>
+        <td>
+            <a href="BasketController/ValidateBasket/{{basketId}}/{{timeslot.id}}"><button type="button" class="btn btn-success">validate</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
